@@ -1,1 +1,25 @@
+#!/bin/bash
+#SBATCH --job-name=PRJNA645628_Download       # Job name
+#SBATCH --partition=batch              # Partition (queue) name, i.e., highmem_p
+#SBATCH --ntasks=1                          # Run a single task
+#SBATCH --cpus-per-task=28                  # Number of CPU cores per task
+#SBATCH --mem=180gb                          # Job memory request
+#SBATCH --time=72:00:00                     # Time limit hrs:min:sec
+#SBATCH --output=indexrunhisat2.%j.out         # Standard output log
+#SBATCH --error=indexrunhisat2.%j.err          # Standard error log
+#SBATCH --mail-type=END,FAIL                # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=taylor.strayhorn@uga.edu   # Where to send mail
+#SBATCH --export=NONE                       # do not load any env variables to compute node
 
+
+module load SRA-Toolkit/2.11.1-centos_linux64 
+
+fastq-dump --split-files --gzip SRR12201890
+fastq-dump --split-files --gzip SRR12201891
+fastq-dump --split-files --gzip SRR12201892
+fastq-dump --split-files --gzip SRR12201893
+fastq-dump --split-files --gzip SRR12201894
+fastq-dump --split-files --gzip SRR12201895
+fastq-dump --split-files --gzip SRR12201896
+fastq-dump --split-files --gzip SRR12201897
+fastq-dump --split-files --gzip SRR12201898
